@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C*zim hoje?</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      font-family: Arial, sans-serif;
+    }
+
+    h2 {
+      color: white;
+      text-align: center;
+    }
+
+    #buttons-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      position: relative;
+    }
+
+    .btn {
+      background-color: white;
+      color: blue;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      padding: 10px 20px;
+      cursor: pointer;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h2>C*zim hoje?</h2>
+  <div id="buttons-container">
+    <button class="btn" id="btnSim">Sim</button>
+    <button class="btn" id="btnNao">Não</button>
+  </div>
+
+  <script>
+    // Função para obter um número aleatório entre min (incluindo) e max (excluindo)
+    function getRandomNumber(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    // Função para posicionar o botão "Não" aleatoriamente
+    function positionButtonNaoRandomly() {
+      const btnNao = document.getElementById("btnNao");
+      const windowWidth = window.innerWidth;
+      const windowHeight = window.innerHeight;
+
+      const randomX = getRandomNumber(0, windowWidth - btnNao.offsetWidth);
+      const randomY = getRandomNumber(0, windowHeight - btnNao.offsetHeight);
+
+      btnNao.style.position = "absolute";
+      btnNao.style.left = `${randomX}px`;
+      btnNao.style.top = `${randomY}px`;
+    }
+
+    // Adicionar evento de clique para o botão "Sim"
+    document.getElementById("btnSim").addEventListener("click", function() {
+      alert("Que bom! Aproveite o dia!");
+    });
+
+    // Adicionar evento de hover (passar o mouse) para o botão "Não"
+    document.getElementById("btnNao").addEventListener("mouseover", positionButtonNaoRandomly);
+  </script>
+</body>
+</html>
